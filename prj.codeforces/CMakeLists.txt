@@ -1,14 +1,13 @@
-add_executable(4a 0004A.cpp,
-0263A.cpp
-0271A.cpp
-0276A.cpp
-0617A.cpp
-0935B.cpp
-0978A.cpp
-0978B.cpp
-1352A.cpp
-1559A.cpp
-1585A.cpp
-1717B.cpp
-1858A.cpp
-1872A.cpp)
+add_executable(4a 0004A.cpp)
+add_executable(263A 0263A.cpp)
+add_executable(271A 0271A.cpp)
+add_executable(276A 0276A.cpp)
+add_executable(617A 0617A.cpp)
+add_executable(935B 0935B.cpp)
+add_executable(978A 0978A.cpp)
+add_executable(978B 0978B.cpp)
+add_executable(1352A 1352A.cpp)
+add_executable(1559A 1559A.cpp)
+add_executable(1585A 1585A.cpp)
+add_executable(1717B 1717B.cpp)
+add_executable(1858A 1858A.cpp)
