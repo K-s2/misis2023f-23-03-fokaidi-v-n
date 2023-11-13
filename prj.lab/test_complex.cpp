@@ -1,7 +1,3 @@
-#include "complex.hpp"
-#ifndef COMPLEX_HPP
-#define COMPLEX_HPP
-
 
 void operator_test_1() {
   Complex x, y;
@@ -33,4 +29,4 @@ int main()
   return 0;
 }
 
-#endif
+
