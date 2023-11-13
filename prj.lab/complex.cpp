@@ -1,3 +1,4 @@
+#include "complex.hpp"
 //создаем блок перегруженных операторов 
 
 bool operator==(const Complex& lhs, const Complex& rhs) {
