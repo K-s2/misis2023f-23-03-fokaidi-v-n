@@ -59,3 +59,5 @@ struct Complex
   static const char rightBrace{ '}' };
 };
 
+#endif
+
