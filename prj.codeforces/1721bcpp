@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <string>
+
+int main()
+{
+	int n, i, j, k, a, b, c, t, m, x, y, d;
+	//std::string a;
+	std::vector <char> h;
+	std::vector <int> o;
+	std::cin >> t;
+	for (int i = 0; i < t; i++)
+	{
+		std::cin >> n >> m >> x >> y >> d;
+		if ((x + d >= n) and (y + d >= m))
+		{
+			std::cout << -1 << std::endl;
+		}
+		else if ((x == n) and (y + d >= m))
+		{
+			std::cout << -1 << std::endl;
+		}
+		else if ((y == n) and (x + d >= m))
+		{
+			std::cout << -1 << std::endl;
+		}
+		else if ((x - d <= 1) and (y - d <= 1))
+		{
+			std::cout << -1 << std::endl;
+		}
+		else if ((x + d >= n) and (x - d <= 1) or ((y + d >= m) and (y - d) <= 1))
+		{
+			std::cout << -1 << std::endl;
+		}
+		else
+		{
+			std::cout << (m - 1) + (n - 1) << std::endl;
+		}
+	}
+
+}
