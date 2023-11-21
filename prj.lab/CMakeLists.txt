@@ -1,3 +1,6 @@
-add_library(complex complex.hpp complex.cpp)
-add_executable(test_complex test_complex.cpp)
-target_link_libraries(test_complex complex)
+add_library(complex
+		complex.hpp
+		complex.cpp
+)
+
+target_include_directories(complex PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
