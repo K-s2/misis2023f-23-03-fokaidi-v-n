@@ -1,15 +1,17 @@
-#ifndef COMPLEX_HPP
-#define COMPLEX_HPP
-#include <iostream>
+#ifndef COMPLEX_H
+#define COMPLEX_H
+
 #include <sstream>
 
-struct Complex
-{
-  Complex() : re(0.0), im(0.0) {}   // конструктор по умолчанию
+struct Complex {
+  // конструктор по умолчанию
+  Complex() : re(0.0), im(0.0) {}
 
-  Complex(const double real) : re(real), im(0.0) {}   // конструктор с одним аргументом
+  // конструктор с одним аргументом
+  Complex(const double real) : re(real), im(0.0) {}
 
-  Complex(const double real, const double imaginary) : re(real), im(imaginary) {}   // конструктор с двумя аргументами
+  // конструктор с двумя аргументами
+  Complex(const double real, const double imaginary) : re(real), im(imaginary) {}
 
   Complex& operator+=(const Complex& rhs) {
     re += rhs.re;
@@ -45,9 +47,9 @@ struct Complex
     return *this;
   }
 
-  std::ostream& writeTo(std::ostream& ostrm) const;   // объявляем функцию writeTo 
+  std::ostream& writeTo(std::ostream& ostrm) const;
 
-  std::istream& readFrom(std::istream& istrm);  // объявляем функцию readFrom 
+  std::istream& readFrom(std::istream& istrm);
 
   double re{ 0.0 };
   double im{ 0.0 };
@@ -58,5 +60,40 @@ struct Complex
   static const char rightBrace{ '}' };
 };
 
-#endif
+bool operator==(const Complex& lhs, const Complex& rhs);
 
+bool operator==(const double lhs, const Complex& rhs);
+
+bool operator==(const Complex& lhs, const double rhs);
+
+bool operator!=(const Complex& lhs, const Complex& rhs);
+
+bool operator!=(const Complex& lhs, const double rhs);
+
+bool operator!=(const double lhs, const Complex& rhs);
+
+Complex operator+(const Complex& lhs, const Complex& rhs);
+
+Complex operator-(const Complex& lhs, const Complex& rhs);
+
+Complex& operator*=(Complex& lhs, const Complex& rhs);
+
+Complex operator*(const Complex& lhs, const Complex& rhs);
+
+Complex operator*(const Complex& lhs, const double rhs);
+
+Complex operator*(const double lhs, const Complex& rhs);
+
+Complex& operator/=(Complex& lhs, const Complex& rhs);
+
+Complex operator/(const Complex& lhs, const Complex& rhs);
+
+Complex operator/(const Complex& lhs, const double rhs);
+
+Complex pow(const Complex& lhs, const int rhs);
+
+std::ostream& operator<<(std::ostream& ostrm, const Complex& rhs);
+
+std::istream& operator>>(std::istream& istrm, Complex& rhs);
+
+#endif
