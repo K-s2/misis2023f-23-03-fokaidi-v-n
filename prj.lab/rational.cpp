@@ -1,4 +1,3 @@
-
 #include <sstream>
 
 class Rational {
@@ -15,11 +14,18 @@ public:
 	
 	std::ostream& writeTo(std::ostream& ostrm) const;
 	std::istream& ReadFrom(std::istream& istrm);
-	int64_t
+
+	Rational& operator+=(const Rational& rhs) {
+		num_ +=
+	}
 };
 
 void test1() {
+	Rational r1;
 	r1 = Rational(5 / 3);
 }
 
+int main() {
+	test1();
+}
 
