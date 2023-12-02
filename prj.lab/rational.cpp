@@ -30,6 +30,20 @@ public:
     return *this;
   }
 
+  Rational& operator*=(const Rational& rhs) {
+    num_ = num_ * rhs.num_;
+    den_ = den_ * rhs.den_;
+    gcd();
+    return *this;
+  }
+
+  Rational& operator/=(const Rational& rhs) {
+    num_ = num_ * rhs.den_;
+    den_ = den_ * rhs.num_;
+    gcd();
+    return *this;
+  }
+
 private:
   int64_t num_ = 0;
   int64_t den_ = 1;
@@ -41,12 +55,9 @@ private:
   }
 
   void gcd() {
-    int64_t n = num_;
-    int64_t d = den_;
-    int64_t k = 2;
-    int64_t gcd_ = num_gcd(n, d);
-    num_ = n/gcd_;
-    den_ = d/gcd_;
+    int64_t gcd_ = num_gcd(num_, den_);
+    num_ = num_/gcd_;
+    den_ = den_/gcd_;
   }
 
 
@@ -76,6 +87,14 @@ void test1() {
   Rational r3{ 5, 2 };
   r3 -= r2;
   std::cout << r3;
+  Rational r4;
+  r4 = { 5, 2 };
+  r4 *= r2;
+  std::cout << " " << r4;
+  Rational r5;
+  r5 = { 5, 2 };
+  r5 /= r2;
+  std::cout << " " << r5;
 }
 
 int main() {
