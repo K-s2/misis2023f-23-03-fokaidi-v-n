@@ -1,5 +1,5 @@
-#ifndef COMPLEX_H
-#define COMPLEX_H
+#ifndef RATIONAL_RATIONAL_HPP_20231113
+#define RATIONAL_RATIONAL_HPP_20231113
 
 #include <sstream>
 
