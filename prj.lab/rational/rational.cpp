@@ -1,4 +1,5 @@
-#include "rational.hpp"
+#include <rational/rational.hpp>
+
 
 Rational::Rational() : num_(0), den_(1) {}
 
