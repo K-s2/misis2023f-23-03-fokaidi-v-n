@@ -59,3 +59,5 @@ bool operator<(const Rational& lhs, const Rational& rhs);
 bool operator<(const Rational& lhs, const int64_t rhs);
 bool operator<=(const Rational& lhs, const Rational& rhs);
 bool operator<=(const Rational& lhs, const int64_t rhs);
+
+#endif
