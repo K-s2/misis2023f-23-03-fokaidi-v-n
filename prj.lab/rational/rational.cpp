@@ -118,6 +118,55 @@ Rational operator/(const Rational& lhs, const int64_t rhs) {
   return ans;
 }
 
+bool operator==(const Rational& lhs, const Rational& rhs) {
+  return ((lhs.num() == rhs.num()) && (lhs.den() == rhs.den()));
+}
+
+bool operator==(const Rational& lhs, const int64_t rhs) {
+  return (lhs.num() == rhs * lhs.den());
+}
+
+bool operator>=(const Rational& lhs, const Rational& rhs) {
+  return((lhs.num() * rhs.den()) >= rhs.num() * lhs.den());
+}
+
+bool operator>=(const Rational& lhs, const int64_t rhs) {
+  return((lhs.num() >= rhs * lhs.den()));
+}
+
+bool operator>(const Rational& lhs, const Rational& rhs) {
+  return((lhs.num() * rhs.den()) > rhs.num() * lhs.den());
+}
+
+bool operator>(const Rational& lhs, const int64_t rhs) {
+  return((lhs.num()) > rhs * lhs.den());
+}
+
+bool operator<(const Rational& lhs, const Rational& rhs) {
+  return((lhs.num() * rhs.den()) < rhs.num() * lhs.den());
+}
+
+bool operator<(const Rational& lhs, const int64_t rhs) {
+  return((lhs.num()) < rhs * lhs.den());
+}
+
+
+bool operator<=(const Rational& lhs, const Rational& rhs) {
+  return ((lhs.num() * rhs.den()) <= rhs.num() * lhs.den());
+}
+
+bool operator<=(const Rational& lhs, const int64_t rhs) {
+  return ((lhs.num()) <= rhs * lhs.den());
+}
+
+bool operator!=(const Rational& lhs, const Rational& rhs) {
+  return !((lhs.num() == rhs.num()) && (lhs.den() == rhs.den()));
+}
+
+bool operator!=(const Rational& lhs, const int64_t rhs) {
+  return !(lhs.num() == rhs * lhs.den());
+}
+
 int64_t Rational::num() const {
   return num_;
 }
