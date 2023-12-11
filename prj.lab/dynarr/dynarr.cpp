@@ -1,3 +1,5 @@
+#include <cstddef>
+
 class DynArr {
 public:
   DynArr() = default;
