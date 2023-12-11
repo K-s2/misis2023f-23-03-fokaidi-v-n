@@ -1,5 +1,6 @@
 #include <rational/rational.hpp>
 
+
 std::ostream& Rational::WriteTo(std::ostream& ostrm) const {
   ostrm << num_ << separator_slash << den_;
   return ostrm;
@@ -21,10 +22,24 @@ Rational& Rational::operator+=(const Rational& rhs) {
   return *this;
 }
 
+
+Rational operator+(const Rational& lhs, const Rational& rhs) {
+  Rational ans = lhs;
+  ans += rhs;
+  return ans;
+}
+
+
 Rational& Rational::operator+=(const int64_t rhs) {
   num_ = num_ + den_ * rhs;
   gcd();
   return *this;
+}
+
+Rational operator+(const Rational& lhs, const int64_t rhs) {
+  Rational ans = lhs;
+  ans += rhs;
+  return ans;
 }
 
 Rational& Rational::operator-=(const Rational& rhs) {
@@ -34,10 +49,22 @@ Rational& Rational::operator-=(const Rational& rhs) {
   return *this;
 }
 
+Rational operator-(const Rational& lhs, const Rational& rhs) {
+  Rational ans = lhs;
+  ans -= rhs;
+  return ans;
+}
+
 Rational& Rational::operator-=(const int64_t rhs) {
   num_ = num_ - rhs * den_;
   gcd();
   return *this;
+}
+
+Rational operator-(const Rational& lhs, const int64_t rhs) {
+  Rational ans = lhs;
+  ans -= rhs;
+  return ans;
 }
 
 Rational& Rational::operator*=(const Rational& rhs) {
@@ -47,11 +74,24 @@ Rational& Rational::operator*=(const Rational& rhs) {
   return *this;
 }
 
+Rational operator*(const Rational& lhs, const Rational& rhs) {
+  Rational ans = lhs;
+  ans *= rhs;
+  return ans;
+}
+
 Rational Rational::operator*=(const int64_t rhs) {
   num_ = num_ * rhs;
   gcd();
   return *this;
 }
+
+Rational operator*(const Rational& lhs, const int64_t rhs) {
+  Rational ans = lhs;
+  ans *= rhs;
+  return ans;
+}
+
 
 Rational& Rational::operator/=(const Rational& rhs) {
   num_ = num_ * rhs.den_;
@@ -60,10 +100,22 @@ Rational& Rational::operator/=(const Rational& rhs) {
   return *this;
 }
 
+Rational operator/(const Rational& lhs, const Rational& rhs) {
+  Rational ans = lhs;
+  ans /= rhs;
+  return ans;
+}
+
 Rational& Rational::operator/=(const int64_t rhs) {
   den_ = den_* rhs;
   gcd();
   return *this;
+}
+
+Rational operator/(const Rational& lhs, const int64_t rhs) {
+  Rational ans = lhs;
+  ans /= rhs;
+  return ans;
 }
 
 int64_t Rational::num() const {
