@@ -167,6 +167,14 @@ bool operator!=(const Rational& lhs, const int64_t rhs) {
   return !(lhs.num() == rhs * lhs.den());
 }
 
+std::istream& operator>>(std::istream& istrm, Rational& rhs) {
+  return rhs.ReadFrom(istrm);
+}
+
+std::ostream& operator<<(std::ostream& ostrm, const Rational& rhs) {
+  return rhs.WriteTo(ostrm);
+}
+
 int64_t Rational::num() const {
   return num_;
 }
