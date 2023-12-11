@@ -194,4 +194,8 @@ void Rational::gcd() {
   int64_t gcd_ = num_gcd(num_, den_);
   num_ = num_ / gcd_;
   den_ = den_ / gcd_;
+  if (num_  < 0){
+    num_ = num_ * (-1);
+    den = den_* (-1);
+  }
 }
