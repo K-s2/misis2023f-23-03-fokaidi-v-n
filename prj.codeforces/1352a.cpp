@@ -17,7 +17,7 @@ int main()
             n=n/10;
             w += 1;
         }
-        vector <int> h;
+        std::vector <int> h;
         h.reserve(w);
         for (i = 0; i <w; i++)
         {
@@ -30,12 +30,12 @@ int main()
             {
                 j+= 1;
             }
-        }cout<<j<<endl;
+        }std::cout<<j<<std::endl;
         for (i =0; i < w; i++)
         {   
             if( h[i]!=0)
             {
-                cout<< h[i]*pow(10, i)<<" ";
+                std::cout<< h[i]*pow(10, i)<<" ";
             }
         }
     }
