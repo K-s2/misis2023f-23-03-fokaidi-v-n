@@ -20,7 +20,7 @@ int main()
 		else
 		{
 			u = f;
-		}max_u = max(u, max_u);
+		}max_u = std::max(u, max_u);
 	}std::cout << max_u;
  
  
