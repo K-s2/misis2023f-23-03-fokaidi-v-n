@@ -107,7 +107,7 @@ Rational operator/(const Rational& lhs, const Rational& rhs) {
 }
 
 Rational& Rational::operator/=(const int64_t rhs) {
-  den_ = den_* rhs;
+  den_ = den_ * rhs;
   gcd();
   return *this;
 }
@@ -194,8 +194,8 @@ void Rational::gcd() {
   int64_t gcd_ = num_gcd(num_, den_);
   num_ = num_ / gcd_;
   den_ = den_ / gcd_;
-  if (num_  < 0){
+  if ((den_ < 0) || ((den_ < 0)&&(num_ <0))) {
     num_ = num_ * (-1);
-    den = den_* (-1);
+    den_ = den_ * (-1);
   }
 }
