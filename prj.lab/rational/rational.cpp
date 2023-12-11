@@ -1,12 +1,5 @@
 #include <rational/rational.hpp>
 
-
-Rational::Rational() : num_(0), den_(1) {}
-
-Rational::Rational(const int64_t numerator) : num_(numerator), den_(1) {}
-
-Rational::Rational(const int64_t numerator, const int64_t denumerator) : num_(numerator), den_(denumerator) {}
-
 std::ostream& Rational::WriteTo(std::ostream& ostrm) const {
   ostrm << num_ << separator_slash << den_;
   return ostrm;
