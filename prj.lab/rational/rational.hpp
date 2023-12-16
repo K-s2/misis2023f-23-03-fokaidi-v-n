@@ -11,7 +11,11 @@ public:
   //конструктор по умолчанию с одним аргументом
   Rational(const int64_t numerator) : num_(numerator), den_(1) {}
   //конструктор с двумя аргументами
-  Rational(const int64_t numerator, const int64_t denumerator) : num_(numerator), den_(denumerator) {}
+  Rational(const int64_t numerator, const int64_t denumerator) {
+    num_ = numerator;
+    den_ = denumerator;
+    gcd();
+  }
 
   std::ostream& WriteTo(std::ostream& ostrm) const;
   std::istream& ReadFrom(std::istream& istrm);
