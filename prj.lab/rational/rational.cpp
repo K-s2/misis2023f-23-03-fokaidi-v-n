@@ -22,13 +22,11 @@ Rational& Rational::operator+=(const Rational& rhs) {
   return *this;
 }
 
-
 Rational operator+(const Rational& lhs, const Rational& rhs) {
   Rational ans = lhs;
   ans += rhs;
   return ans;
 }
-
 
 Rational& Rational::operator+=(const int64_t rhs) {
   num_ = num_ + den_ * rhs;
@@ -36,11 +34,16 @@ Rational& Rational::operator+=(const int64_t rhs) {
   return *this;
 }
 
-Rational operator+(const Rational& lhs, const int64_t rhs) {
-  Rational ans = lhs;
-  ans += rhs;
+Rational operator+(const Rational& rhs, const int64_t lhs) {
+  Rational ans = rhs;
+  ans += lhs;
   return ans;
 }
+
+Rational operator+(const int64_t lhs, const Rational& rhs) noexcept { return operator+(rhs, lhs); }
+Rational operator-(const int64_t lhs, const Rational& rhs) noexcept { return operator+(rhs, lhs); }
+Rational operator*(const int64_t lhs, const Rational& rhs) noexcept { return operator+(rhs, lhs); }
+Rational operator/(const int64_t lhs, const Rational& rhs) { return operator+(rhs, lhs); }
 
 Rational& Rational::operator-=(const Rational& rhs) {
   num_ = num_ * rhs.den_ - den_ * rhs.num_;
@@ -66,6 +69,7 @@ Rational operator-(const Rational& lhs, const int64_t rhs) {
   ans -= rhs;
   return ans;
 }
+
 
 Rational& Rational::operator*=(const Rational& rhs) {
   num_ = num_ * rhs.num_;
