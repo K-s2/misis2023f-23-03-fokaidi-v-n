@@ -35,7 +35,7 @@ private:
   int num_gcd(int64_t a, int64_t b);
   void gcd();
 
-  static const char separator_slash;
+  static const char separator_slash{ '/' };
 };
 
 std::ostream& operator<<(std::ostream& ostrm, const Rational& rhs);
