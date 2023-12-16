@@ -5,7 +5,7 @@
 #define DYNARR_DYNARR_HPP_20231203
 
 #include <cstddef>
-#include <dynarr/dynar.hpp>
+#include <dynarr/dynarr.hpp>
 
 std::ostream& operator<<(std::ostream& ostrm, DynArr& a) {
   for (int i = 0; i < a.Size(); ++i) {
