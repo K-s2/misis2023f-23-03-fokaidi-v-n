@@ -1,7 +1,7 @@
-add_library(rational rational.cpp rational.hpp)
-set_property(TARGET rational PROPERTY CXX_STANDARD 20)
-target_include_directories(rational PUBLIC
+add_library(dynarr dynarr.cpp dynarr.hpp)
+set_property(TARGET dynarr PROPERTY CXX_STANDARD 20)
+target_include_directories(dynarr PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/..>
   $<INSTALL_INTERFACE:include>
 )
-install(TARGETS rational)
+install(TARGETS dynarr)
