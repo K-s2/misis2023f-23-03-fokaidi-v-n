@@ -1,10 +1,11 @@
 // 2023 by Polevoi Dmitry under Unlicense
 
 #pragma once
-#ifndef DYNARR_DYNARR_HPP_20231203
-#define DYNARR_DYNARR_HPP_20231203
 
 #include <cstddef>
+#include <sstream>
+#include <stdexcept>
+#include <iostream>
 #include <dynarr/dynarr.hpp>
 
 std::ostream& operator<<(std::ostream& ostrm, DynArr& a) {
@@ -15,7 +16,8 @@ std::ostream& operator<<(std::ostream& ostrm, DynArr& a) {
 }
 
   std::ptrdiff_t DynArr::Size() const noexcept { return size_; }
-  void Rational::Resize(const std::ptrdiff_t size) {
+
+  void DynArr::Resize(const std::ptrdiff_t size) {
     if (size > capacity_) {
       float* new_data_ = new float[size];
       for (std::ptrdiff_t ind = 0; ind < capacity_; ind++) new_data_[ind] = data_[ind];
