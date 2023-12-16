@@ -1,4 +1,5 @@
 #include <rational/rational.hpp>
+#include <stdexcept>
 
 
 std::ostream& Rational::WriteTo(std::ostream& ostrm) const {
@@ -201,5 +202,8 @@ void Rational::gcd() {
   if ((den_ < 0) || ((den_ < 0)&&(num_ <0))) {
     num_ = num_ * (-1);
     den_ = den_ * (-1);
+  }
+  if (den_ == 0) {
+    throw std::runtime_error("Division by zero");
   }
 }
