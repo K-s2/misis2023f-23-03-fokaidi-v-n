@@ -29,8 +29,8 @@ public:
   int64_t den() const;
 
 private:
-  int64_t num_ = 1;
-  int64_t den_ = 0;
+  int64_t num_ = 0;
+  int64_t den_ = 1;
 
   int num_gcd(int64_t a, int64_t b);
   void gcd();
@@ -49,6 +49,12 @@ Rational operator*(const Rational& lhs, const int64_t rhs);
 Rational operator/(const Rational& lhs, const Rational& rhs);
 Rational operator/(const Rational& lhs, const int64_t rhs);
 
+Rational operator+(const int64_t lhs, const Rational& rhs) noexcept;
+Rational operator-(const int64_t lhs, const Rational& rhs) noexcept;
+Rational operator*(const int64_t lhs, const Rational& rhs) noexcept;
+Rational operator/(const int64_t lhs, const Rational& rhs);
+
+
 bool operator==(const Rational& lhs, const Rational& rhs);
 bool operator==(const Rational& lhs, const int64_t rhs);
 bool operator>=(const Rational& lhs, const Rational& rhs);
@@ -59,5 +65,6 @@ bool operator<(const Rational& lhs, const Rational& rhs);
 bool operator<(const Rational& lhs, const int64_t rhs);
 bool operator<=(const Rational& lhs, const Rational& rhs);
 bool operator<=(const Rational& lhs, const int64_t rhs);
+
 
 #endif
