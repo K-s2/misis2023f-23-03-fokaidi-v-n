@@ -6,7 +6,6 @@
 #include <sstream>
 #include <stdexcept>
 #include <iostream>
-#include <cstddef>
 #include <dynarr/dynarr.hpp>
 
 DynArr::DynArr(const std::ptrdiff_t& size) {
