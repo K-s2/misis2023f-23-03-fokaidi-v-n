@@ -1,99 +1,79 @@
-#ifndef COMPLEX_H
-#define COMPLEX_H
+#ifndef COMPLEX_HPP
+#define COMPLEX_HPP
 
+#include <iostream>
 #include <sstream>
+#include <cmath>
+#include <algorithm>
+#include <stdexcept>
+#include <iosfwd>
+#include <limits>
 
 struct Complex {
-  // конструктор по умолчанию
-  Complex() : re(0.0), im(0.0) {}
+  [[nodiscard]] Complex();
 
-  // конструктор с одним аргументом
-  Complex(const double real) : re(real), im(0.0) {}
+  [[nodiscard]] Complex(const Complex&);
 
-  // конструктор с двумя аргументами
-  Complex(const double real, const double imaginary) : re(real), im(imaginary) {}
+  [[nodiscard]] explicit Complex(const double real);
+  [[nodiscard]] Complex(const double real, const double imaginary);
 
-  Complex& operator+=(const Complex& rhs) {
-    re += rhs.re;
-    im += rhs.im;
-    return *this;
-  }
+  Complex& operator=(const Complex& other);
 
-  Complex& operator+=(const double rhs) {
-    re += rhs;
-    return *this;
-  }
+  ~Complex() = default;
 
-  Complex& operator-=(const Complex& rhs) {
-    re -= rhs.re;
-    im -= rhs.im;
-    return *this;
-  }
 
-  Complex& operator-=(const double rhs) {
-    re -= rhs;
-    return *this;
-  }
+  [[nodiscard]] Complex operator-() const noexcept;
 
-  Complex& operator*=(const double rhs) {
-    re *= rhs;
-    im *= rhs;
-    return *this;
-  }
+  [[nodiscard]] bool operator==(const Complex& rhs) const noexcept;
 
-  Complex& operator/=(const double rhs) {
-    re /= rhs;
-    im /= rhs;
-    return *this;
-  }
+  [[nodiscard]] bool operator!=(const Complex& rhs) const noexcept;
 
-  std::ostream& writeTo(std::ostream& ostrm) const;
+  Complex& operator+=(const Complex& rhs) noexcept;
+  Complex& operator+=(const double rhs) noexcept;
 
-  std::istream& readFrom(std::istream& istrm);
+  Complex& operator-=(const Complex& rhs) noexcept;
+  Complex& operator-=(const double rhs) noexcept;
+
+  Complex& operator*=(const Complex& rhs) noexcept;
+  Complex& operator*=(const double rhs) noexcept;
+
+  Complex& operator/=(const Complex& rhs);
+  Complex& operator/=(const double rhs);
+
+  [[nodiscard]] std::ostream& WriteTo(std::ostream& ostrm) const noexcept;
+
+  [[nodiscard]] std::istream& ReadFrom(std::istream& istrm) noexcept;
 
   double re{ 0.0 };
   double im{ 0.0 };
 
   static const char leftBrace{ '{' };
-  static const char separator_comma{ ',' };
-  static const char separator_space{ ' ' };
+  static const char separator{ ',' };
   static const char rightBrace{ '}' };
 };
 
-bool operator==(const Complex& lhs, const Complex& rhs);
+[[nodiscard]] Complex operator+(const Complex& lhs, const Complex& rhs) noexcept;
+[[nodiscard]] Complex operator+(const Complex& lhs, const double rhs) noexcept;
+[[nodiscard]] Complex operator+(const double lhs, const Complex& rhs) noexcept;
 
-bool operator==(const double lhs, const Complex& rhs);
+[[nodiscard]] Complex operator-(const Complex& lhs, const Complex& rhs) noexcept;
+[[nodiscard]] Complex operator-(const Complex& lhs, const double rhs) noexcept;
+[[nodiscard]] Complex operator-(const double lhs, const Complex& rhs) noexcept;
 
-bool operator==(const Complex& lhs, const double rhs);
+[[nodiscard]] Complex operator*(const Complex& lhs, const Complex& rhs) noexcept;
+[[nodiscard]] Complex operator*(const Complex& lhs, const double rhs) noexcept;
+[[nodiscard]] Complex operator*(const double lhs, const Complex& rhs) noexcept;
 
-bool operator!=(const Complex& lhs, const Complex& rhs);
+[[nodiscard]] Complex operator/(const Complex& lhs, const Complex& rhs);
+[[nodiscard]] Complex operator/(const Complex& lhs, const double rhs);
+[[nodiscard]] Complex operator/(const double lhs, const Complex& rhs);
 
-bool operator!=(const Complex& lhs, const double rhs);
+inline std::ostream& operator<<(std::ostream& ostrm, const Complex& rhs) noexcept {
+  return rhs.WriteTo(ostrm);
+}
 
-bool operator!=(const double lhs, const Complex& rhs);
-
-Complex operator+(const Complex& lhs, const Complex& rhs);
-
-Complex operator-(const Complex& lhs, const Complex& rhs);
-
-Complex& operator*=(Complex& lhs, const Complex& rhs);
-
-Complex operator*(const Complex& lhs, const Complex& rhs);
-
-Complex operator*(const Complex& lhs, const double rhs);
-
-Complex operator*(const double lhs, const Complex& rhs);
-
-Complex& operator/=(Complex& lhs, const Complex& rhs);
-
-Complex operator/(const Complex& lhs, const Complex& rhs);
-
-Complex operator/(const Complex& lhs, const double rhs);
-
-Complex pow(const Complex& lhs, const int rhs);
-
-std::ostream& operator<<(std::ostream& ostrm, const Complex& rhs);
-
-std::istream& operator>>(std::istream& istrm, Complex& rhs);
+inline std::istream& operator>>(std::istream& istrm, Complex& rhs) noexcept {
+  return rhs.ReadFrom(istrm);
+}
 
 #endif
