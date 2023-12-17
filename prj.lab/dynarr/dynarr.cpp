@@ -6,7 +6,20 @@
 #include <sstream>
 #include <stdexcept>
 #include <iostream>
+#include <cstddef>
 #include <dynarr/dynarr.hpp>
+
+DynArr::DynArr(const std::ptrdiff_t& size) {
+  if (size < 1) {
+    std::invalid_argument("Size mustr be natural number");
+  }
+  size_ = size;
+  capacity_ = size;
+  data_ = new float[size];
+  for (std::ptrdiff_t i = 0; i < size; i++) {
+    data_[i] = 0;
+  }
+}
 
 std::ostream& operator<<(std::ostream& ostrm, DynArr& a) {
   for (int i = 0; i < a.Size(); ++i) {
@@ -25,17 +38,6 @@ std::ostream& operator<<(std::ostream& ostrm, DynArr& a) {
       data_ = new_data_;
     }
     size_ = size;
-  }
-
-DynArr&  DynArr::operator=(const DynArr& rhs) {
-    size_ = rhs.size_;
-    capacity_ = size_;
-    delete[] data_;
-    data_ = new float[size_];
-    for (int i = 0; i < size_; i++) {
-      data_[i] = rhs[i];
-    }
-    return *this;
   }
 
 float& DynArr::operator[](const std::ptrdiff_t index) {
