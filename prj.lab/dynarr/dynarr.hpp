@@ -39,7 +39,7 @@ public:
 
   const float& operator[](const std::ptrdiff_t index) const;
 
-  [[nodiscard]] DynArr& operator=(const DynArr&) = default;
+  [[nodiscard]] DynArr& operator=(const DynArr& rhs);
 
   std::ptrdiff_t Size() const noexcept;
   void Resize(const std::ptrdiff_t size);
