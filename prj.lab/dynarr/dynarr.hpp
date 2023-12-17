@@ -33,9 +33,8 @@ public:
   //конструктор по размеру
   DynArr(const std::ptrdiff_t& size);
 
-  ~DynArr() {
-    delete[] data_;
-  }
+  ~DynArr() = default;
+
   float& operator[](const std::ptrdiff_t index);
 
   const float& operator[](const std::ptrdiff_t index) const;
