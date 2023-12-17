@@ -31,11 +31,8 @@ public:
     }
   }
   //конструктор по размеру
-  DynArr(const std::ptrdiff_t& size){
-    size_ = size;
-    capacity_ = size_;
-    data_ = new float[size_];
-  }
+  DynArr(const std::ptrdiff_t& size);
+
   ~DynArr() {
     delete[] data_;
   }
@@ -43,9 +40,9 @@ public:
 
   const float& operator[](const std::ptrdiff_t index) const;
 
-  DynArr& operator=(const DynArr& rhs);
+  [[nodiscard]] DynArr& operator=(const DynArr&) = default;
 
-  std::ptrdiff_t Size() const noexcept { }
+  std::ptrdiff_t Size() const noexcept;
   void Resize(const std::ptrdiff_t size);
 
 private:
