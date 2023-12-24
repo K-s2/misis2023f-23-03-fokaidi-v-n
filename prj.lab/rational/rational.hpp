@@ -29,6 +29,13 @@ public:
   Rational& operator/=(const Rational& rhs);
   Rational& operator/=(const int64_t rhs);
 
+  bool operator==(const Rational& rhs);
+  [[nodiscard]] bool operator!=(const Rational& rhs);
+  bool operator>=(const Rational& rhs);
+  bool operator>( const Rational& rhs);
+  bool operator<(const Rational& rhs);
+  bool operator<=(const Rational& rhs);
+
   int64_t num() const;
   int64_t den() const;
 
@@ -57,18 +64,6 @@ Rational operator+(const int64_t lhs, const Rational& rhs) noexcept;
 Rational operator-(const int64_t lhs, const Rational& rhs) noexcept;
 Rational operator*(const int64_t lhs, const Rational& rhs) noexcept;
 Rational operator/(const int64_t lhs, const Rational& rhs);
-
-
-bool operator==(const Rational& lhs, const Rational& rhs);
-bool operator==(const Rational& lhs, const int64_t rhs);
-bool operator>=(const Rational& lhs, const Rational& rhs);
-bool operator>=(const Rational& lhs, const int64_t rhs);
-bool operator>(const Rational& lhs, const Rational& rhs);
-bool operator>(const Rational& lhs, const int64_t rhs);
-bool operator<(const Rational& lhs, const Rational& rhs);
-bool operator<(const Rational& lhs, const int64_t rhs);
-bool operator<=(const Rational& lhs, const Rational& rhs);
-bool operator<=(const Rational& lhs, const int64_t rhs);
 
 
 #endif
