@@ -514,6 +514,25 @@ TEST_CASE("rational * test") {
   CHECK(14 == c.den());
 }
 
+TEST_CASE("rational = test") {
+  Rational a;
+  Rational b;
+  a = Rational(1, 2);
+  b = Rational(2, 3);
+  a = b;
+  CHECK(2 == a.num());
+  a -= 1;
+  CHECK(2 == b.num());
+}
+
+TEST_CASE("rational unarni operator minus") {
+  Rational a;
+  Rational b;
+  a = Rational(1, 2);
+  b = -a;
+  CHECK((b.num() == -1));
+  CHECK(b.den() == 2);
+}
 
 TEST_CASE("rational / test") {
   Rational a;
