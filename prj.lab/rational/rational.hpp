@@ -17,6 +17,7 @@ public:
     den_ = denumerator;
     gcd();
   }
+  ~Rational() = default;
   [[nodiscard]] Rational operator-() const noexcept { return { -num_, den_ }; }
   std::ostream& WriteTo(std::ostream& ostrm) const;
   std::istream& ReadFrom(std::istream& istrm);
