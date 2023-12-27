@@ -3,6 +3,7 @@
 #define RATIONAL_RATIONAL_HPP_20231113
 
 #include <cstdint>
+#include <sstream>
 #include <iosfwd>
 
 class Rational {
