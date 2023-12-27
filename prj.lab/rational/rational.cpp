@@ -1,5 +1,6 @@
 #include <rational/rational.hpp>
 #include <stdexcept>
+#include <iostream>
 
 
 std::ostream& Rational::WriteTo(std::ostream& ostrm) const {
