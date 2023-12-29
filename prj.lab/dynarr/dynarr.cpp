@@ -11,7 +11,7 @@
 
 DynArr::DynArr(const std::ptrdiff_t& size) {
   if (size < 1) {
-    std::invalid_argument("Size mustr be natural number");
+    throw std::invalid_argument("Size mustr be natural number");
   }
   size_ = size;
   capacity_ = size;
