@@ -21,16 +21,12 @@ DynArr::DynArr(const std::ptrdiff_t& size) {
   }
 }
 
-std::ostream& operator<<(std::ostream& ostrm, DynArr& a) {
-  for (int i = 0; i < a.Size(); ++i) {
-    ostrm << a[i] << ' ';
-  }
-  return ostrm;
-}
-
   std::ptrdiff_t DynArr::Size() const noexcept { return size_; }
 
   void DynArr::Resize(const std::ptrdiff_t size) {
+    if (size < 1) {
+      throw std::invalid_argument("Size must be natural number");
+    }
     if (size > capacity_) {
       float* new_data_ = new float[size];
       for (std::ptrdiff_t ind = 0; ind < capacity_; ind++) new_data_[ind] = data_[ind];
