@@ -19,27 +19,27 @@ public:
   }
   ~Rational() = default;
   [[nodiscard]] Rational operator-() const noexcept { return { -num_, den_ }; }
-  std::ostream& WriteTo(std::ostream& ostrm) const;
-  std::istream& ReadFrom(std::istream& istrm);
+  std::ostream& WriteTo(std::ostream& ostrm) const noexcept;
+  std::istream& ReadFrom(std::istream& istrm) noexcept;
 
-  Rational& operator+=(const Rational& rhs);
-  Rational& operator+=(const int64_t rhs);
-  Rational& operator-=(const Rational& rhs);
-  Rational& operator-=(const int64_t rhs);
-  Rational& operator*=(const Rational& rhs);
-  Rational operator*=(const int64_t rhs);
+  Rational& operator+=(const Rational& rhs) noexcept;
+  Rational& operator+=(const int64_t rhs) noexcept;
+  Rational& operator-=(const Rational& rhs) noexcept;
+  Rational& operator-=(const int64_t rhs) noexcept;
+  Rational& operator*=(const Rational& rhs) noexcept;
+  Rational operator*=(const int64_t rhs) noexcept;
   Rational& operator/=(const Rational& rhs);
-  Rational& operator/=(const int64_t rhs);
+  Rational& operator/=(const int64_t rhs) ;
 
-  bool operator==(const Rational& rhs);
-  [[nodiscard]] bool operator!=(const Rational& rhs);
-  bool operator>=(const Rational& rhs);
-  bool operator>( const Rational& rhs);
-  bool operator<(const Rational& rhs);
-  bool operator<=(const Rational& rhs);
+  bool operator==(const Rational& rhs) const noexcept;
+  [[nodiscard]] bool operator!=(const Rational& rhs) const noexcept;
+  bool operator>=(const Rational& rhs) const noexcept;
+  bool operator>(const Rational& rhs) const noexcept;
+  bool operator<(const Rational& rhs) const noexcept;
+  bool operator<=(const Rational& rhs) const noexcept;
 
-  int64_t num() const;
-  int64_t den() const;
+  int64_t num() const noexcept;
+  int64_t den() const noexcept;
 
 private:
   int64_t num_ = 0;
@@ -51,21 +51,21 @@ private:
   static const char separator_slash{ '/' };
 };
 
-std::ostream& operator<<(std::ostream& ostrm, const Rational& rhs);
-std::istream& operator>>(std::istream& istrm, Rational& rhs);
-Rational operator+(const Rational& lhs, const Rational& rhs);
-Rational operator+(const Rational& lhs, const int64_t rhs);
-Rational operator-(const Rational& lhs, const Rational& rhs);
-Rational operator-(const Rational& lhs, const int64_t rhs);
-Rational operator*(const Rational& lhs, const Rational& rhs);
-Rational operator*(const Rational& lhs, const int64_t rhs);
+std::ostream& operator<<(std::ostream& ostrm, const Rational& rhs) noexcept;
+std::istream& operator>>(std::istream& istrm, Rational& rhs) noexcept;
+Rational operator+(const Rational& lhs, const Rational& rhs) noexcept;
+Rational operator+(const Rational& lhs, const int64_t rhs) noexcept;
+Rational operator-(const Rational& lhs, const Rational& rhs) noexcept;
+Rational operator-(const Rational& lhs, const int64_t rhs) noexcept;
+Rational operator*(const Rational& lhs, const Rational& rhs) noexcept;
+Rational operator*(const Rational& lhs, const int64_t rhs) noexcept;
 Rational operator/(const Rational& lhs, const Rational& rhs);
 Rational operator/(const Rational& lhs, const int64_t rhs);
 
 Rational operator+(const int64_t lhs, const Rational& rhs) noexcept;
 Rational operator-(const int64_t lhs, const Rational& rhs) noexcept;
 Rational operator*(const int64_t lhs, const Rational& rhs) noexcept;
-Rational operator/(const int64_t lhs, const Rational& rhs);
+Rational operator/(const int64_t lhs, const Rational& rhs) ;
 
 
 #endif
