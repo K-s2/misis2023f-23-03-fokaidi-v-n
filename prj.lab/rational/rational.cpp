@@ -3,12 +3,12 @@
 #include <iostream>
 
 
-std::ostream& Rational::WriteTo(std::ostream& ostrm) const {
+std::ostream& Rational::WriteTo(std::ostream& ostrm) const noexcept {
   ostrm << num_ << separator_slash << den_;
   return ostrm;
 }
 
-std::istream& Rational::ReadFrom(std::istream& istrm) {
+std::istream& Rational::ReadFrom(std::istream& istrm) noexcept {
   char slash(0);
   istrm >> num_ >> slash >> den_;
   if (istrm && (separator_slash == slash)) {
@@ -17,26 +17,26 @@ std::istream& Rational::ReadFrom(std::istream& istrm) {
   return istrm;
 }
 
-Rational& Rational::operator+=(const Rational& rhs) {
+Rational& Rational::operator+=(const Rational& rhs) noexcept {
   num_ = num_ * rhs.den_ + den_ * rhs.num_;
   den_ = den_ * rhs.den_;
   gcd();
   return *this;
 }
 
-Rational operator+(const Rational& lhs, const Rational& rhs) {
+Rational operator+(const Rational& lhs, const Rational& rhs) noexcept {
   Rational ans = lhs;
   ans += rhs;
   return ans;
 }
 
-Rational& Rational::operator+=(const int64_t rhs) {
+Rational& Rational::operator+=(const int64_t rhs) noexcept  {
   num_ = num_ + den_ * rhs;
   gcd();
   return *this;
 }
 
-Rational operator+(const Rational& rhs, const int64_t lhs) {
+Rational operator+(const Rational& rhs, const int64_t lhs) noexcept {
   Rational ans = rhs;
   ans += lhs;
   return ans;
@@ -47,52 +47,52 @@ Rational operator-(const int64_t lhs, const Rational& rhs) noexcept { return ope
 Rational operator*(const int64_t lhs, const Rational& rhs) noexcept { return operator+(rhs, lhs); }
 Rational operator/(const int64_t lhs, const Rational& rhs) { return operator+(rhs, lhs); }
 
-Rational& Rational::operator-=(const Rational& rhs) {
+Rational& Rational::operator-=(const Rational& rhs) noexcept  {
   num_ = num_ * rhs.den_ - den_ * rhs.num_;
   den_ = den_ * rhs.den_;
   gcd();
   return *this;
 }
 
-Rational operator-(const Rational& lhs, const Rational& rhs) {
+Rational operator-(const Rational& lhs, const Rational& rhs) noexcept  {
   Rational ans = lhs;
   ans -= rhs;
   return ans;
 }
 
-Rational& Rational::operator-=(const int64_t rhs) {
+Rational& Rational::operator-=(const int64_t rhs) noexcept  {
   num_ = num_ - rhs * den_;
   gcd();
   return *this;
 }
 
-Rational operator-(const Rational& lhs, const int64_t rhs) {
+Rational operator-(const Rational& lhs, const int64_t rhs) noexcept {
   Rational ans = lhs;
   ans -= rhs;
   return ans;
 }
 
 
-Rational& Rational::operator*=(const Rational& rhs) {
+Rational& Rational::operator*=(const Rational& rhs) noexcept {
   num_ = num_ * rhs.num_;
   den_ = den_ * rhs.den_;
   gcd();
   return *this;
 }
 
-Rational operator*(const Rational& lhs, const Rational& rhs) {
+Rational operator*(const Rational& lhs, const Rational& rhs) noexcept  {
   Rational ans = lhs;
   ans *= rhs;
   return ans;
 }
 
-Rational Rational::operator*=(const int64_t rhs) {
+Rational Rational::operator*=(const int64_t rhs) noexcept {
   num_ = num_ * rhs;
   gcd();
   return *this;
 }
 
-Rational operator*(const Rational& lhs, const int64_t rhs) {
+Rational operator*(const Rational& lhs, const int64_t rhs) noexcept {
   Rational ans = lhs;
   ans *= rhs;
   return ans;
@@ -124,43 +124,43 @@ Rational operator/(const Rational& lhs, const int64_t rhs) {
   return ans;
 }
 
-bool Rational::operator==(const Rational& rhs) {
+bool Rational::operator==(const Rational& rhs) const noexcept {
   return ((num_ == rhs.num()) && (den_ == rhs.den()));
 }
 
-bool Rational::operator>=(const Rational & rhs) {
+bool Rational::operator>=(const Rational & rhs) const noexcept {
   return((num_ * rhs.den()) >= rhs.num() * den_);
 }
 
-bool Rational::operator>(const Rational& rhs) {
+bool Rational::operator>(const Rational& rhs) const noexcept {
   return((num_ * rhs.den()) > rhs.num() * den_);
 }
 
-bool Rational:: operator<(const Rational& rhs) {
+bool Rational:: operator<(const Rational& rhs) const noexcept {
   return((num_ * rhs.den()) < rhs.num() * den_);
 }
 
-bool Rational::operator<=(const Rational& rhs) {
+bool Rational::operator<=(const Rational& rhs) const noexcept {
   return ((num_ * rhs.den()) <= rhs.num() * den_);
 }
 
-bool Rational::operator!=(const Rational& rhs) {
+bool Rational::operator!=(const Rational& rhs) const noexcept {
   return !((num_ == rhs.num()) && (den_ == rhs.den()));
 }
 
-std::istream& operator>>(std::istream& istrm, Rational& rhs) {
+std::istream& operator>>(std::istream& istrm, Rational& rhs) noexcept{
   return rhs.ReadFrom(istrm);
 }
 
-std::ostream& operator<<(std::ostream& ostrm, const Rational& rhs) {
+std::ostream& operator<<(std::ostream& ostrm, const Rational& rhs) noexcept {
   return rhs.WriteTo(ostrm);
 }
 
-int64_t Rational::num() const {
+int64_t Rational::num() const noexcept {
   return num_;
 }
 
-int64_t Rational::den() const {
+int64_t Rational::den() const noexcept {
   return den_;
 }
 
