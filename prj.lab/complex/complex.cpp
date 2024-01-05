@@ -165,7 +165,7 @@ std::istream& Complex::ReadFrom(std::istream& istrm) noexcept {
   double imaginary(0.0);
   char rightBrace(0);
   istrm >> leftBrace >> real >> comma >> imaginary >> rightBrace;
-  if (istrm.good() || istrm.eof())
+  if (istrm.good() || istrm.eof())//установка флага
   {
     if ((Complex::leftBrace == leftBrace) && (Complex::separator == comma) && (Complex::rightBrace == rightBrace))
     {
